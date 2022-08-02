@@ -1,4 +1,17 @@
+CC = g++
+
+HEADER_LIBS = Point.cpp Line.cpp Window.cpp
+OBJECT_HEADER_LIBS = Point.o Line.o Window.o
+LIBS = -lSDL2
+
 all:
-	gcc -c Point.cpp
-	gcc -c Line.cpp
-	g++ main.cpp -lSDL2 Line.o Point.o
+	$(CC) -c $(HEADER_LIBS) -lSDL2
+	$(CC) main.cpp $(OBJECT_HEADER_LIBS) $(LIBS) 
+
+clean:
+	$(RM) a.out 
+	$(RM) *.o 
+
+compile_libs:
+	$(CC) -c $(HEADER_LIBS) -lSDL2
+
