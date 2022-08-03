@@ -6,6 +6,6 @@
 class Line {
 public:
   Line(SDL_Renderer *renderer, Point *p1, Point *p2);
-  static void renderLine(SDL_Renderer *renderer, Point *p1, Point *p2);
+  static void renderLine(SDL_Renderer *renderer, Point p1, Point p2);
 };
 #endif

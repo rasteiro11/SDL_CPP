@@ -1,11 +1,12 @@
 #ifndef _POINT
 #define _POINT
 #include <SDL2/SDL.h>
-class Point : public SDL_Rect {
+#include <SDL2/SDL_rect.h>
+class Point : public SDL_FRect {
 public:
-  Point(int x, int y, size_t thickness);
-  Point(int x, int y);
-  int getX();
-  int getY();
+  Point(float x, float y, size_t thickness);
+  Point(float x, float y);
+  float getX();
+  float getY();
 };
 #endif

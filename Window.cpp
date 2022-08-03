@@ -44,16 +44,13 @@ void Window::render() {
   // Line(renderer, points[0], points[1]);
 
   SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-  Line::renderLine(renderer, new Point(0, 0), new Point(400, 300));
-
-  SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-  Line::renderLine(renderer, new Point(800, 600), new Point(400, 300));
+  Line::renderLine(renderer, *new Point(0, 0), *new Point(400, 300));
 
   SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-  Line::renderLine(renderer, new Point(800, 1), new Point(400, 300));
+  Line::renderLine(renderer, *new Point(0, 300), *new Point(800, 300));
 
-  /// SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-  /// SDL_RenderFillRect(renderer, new Point(400, 300));
+  SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+  Line::renderLine(renderer, *new Point(400, 300), *new Point(800, 0));
 
   SDL_RenderPresent(renderer);
   SDL_Delay(500);
