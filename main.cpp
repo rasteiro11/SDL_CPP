@@ -1,6 +1,6 @@
-#include "Line.h"
-#include "Point.h"
-#include "Window.h"
+#include "Line.hpp"
+#include "Point.hpp"
+#include "Window.hpp"
 
 int main(int argc, char **args) {
 

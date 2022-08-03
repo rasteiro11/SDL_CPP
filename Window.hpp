@@ -1,7 +1,7 @@
 #ifndef _WINDOW
 #define _WINDOW
-#include "Line.h"
-#include "Point.h"
+#include "Line.hpp"
+#include "Point.hpp"
 #include <iostream>
 #include <string>
 #include <vector>

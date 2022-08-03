@@ -1,4 +1,4 @@
-#include "Point.h"
+#include "Point.hpp"
 
 Point::Point(float x, float y, size_t thickness) {
   this->x = x;
