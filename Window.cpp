@@ -33,37 +33,33 @@ void Window::render() {
   SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
   SDL_RenderClear(renderer);
 
-  // std::vector<Point *> points = std::vector<Point *>();
-  // points.push_back(new Point(50, 50));
-  // points.push_back(new Point(400, 300));
-
-  // for (Point *p : points) {
-  //  SDL_RenderFillRect(renderer, p);
-  //}
-
-  // Line(renderer, points[0], points[1]);
-
   // Render Line Testing
 
-  SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
-  Line::renderLineTest(renderer, *new Point(0, 0), *new Point(400, 300));
+  // SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+  // Line::renderLineTest(renderer, *new Point(0, 0), *new Point(400, 300));
 
-  SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-  Line::renderLineTest(renderer, *new Point(400, 300), *new Point(800, 0));
+  // SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+  // Line::renderLineTest(renderer, *new Point(400, 300), *new Point(800, 0));
 
-  SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-  Line::renderLineTest(renderer, *new Point(0, 300), *new Point(800, 300));
+  // SDL_SetRenderDrawColor(renderer, 0, 255, 0, 1);
+  // Line::renderLineTest(renderer, *new Point(0, 300), *new Point(800, 300));
+
+  // SDL_SetRenderDrawColor(renderer, 255, 192, 203, 1);
+  // Line::renderLineTest(renderer, *new Point(400, 0), *new Point(400, 300));
 
   // Render Line Using Naive Algorithm
 
-  // SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
-  // Line::renderNaiveLine(renderer, *new Point(0, 0), *new Point(400, 300));
+  SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+  Line::renderNaiveLine(renderer, *new Point(0, 0), *new Point(400, 300));
 
-  // SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-  // Line::renderNaiveLine(renderer, *new Point(400, 300), *new Point(800, 0));
+  SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+  Line::renderNaiveLine(renderer, *new Point(400, 300), *new Point(800, 0));
 
-  // SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-  // Line::renderNaiveLine(renderer, *new Point(0, 300), *new Point(800, 300));
+  SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+  Line::renderNaiveLine(renderer, *new Point(0, 300), *new Point(800, 300));
+
+  SDL_SetRenderDrawColor(renderer, 255, 192, 203, 255);
+  Line::renderNaiveLine(renderer, *new Point(400, 0), *new Point(400, 300));
 
   // Render Line Using Digital Differential Analyzer
 
@@ -75,6 +71,9 @@ void Window::render() {
   //
   //  SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
   //  Line::renderDDALine(renderer, *new Point(400, 300), *new Point(800, 0));
+  //
+  //  SDL_SetRenderDrawColor(renderer, 255, 192, 203, 255);
+  //  Line::renderDDALine(renderer, *new Point(400, 0), *new Point(400, 300));
 
   SDL_RenderPresent(renderer);
   SDL_Delay(500);
