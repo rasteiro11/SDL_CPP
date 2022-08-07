@@ -6,8 +6,107 @@
 class Line {
 public:
   Line(SDL_Renderer *renderer, Point *p1, Point *p2);
-  static void renderNaiveLine(SDL_Renderer *renderer, Point p1, Point p2);
-  static void renderLineTest(SDL_Renderer *renderer, Point p1, Point p2);
-  static void renderDDALine(SDL_Renderer *renderer, Point p1, Point p2);
+  static void renderNaiveLine(SDL_Renderer *renderer, Point p1, Point p2) {
+    float dx = p2.getX() - p1.getX();
+    float dy = p2.getY() - p1.getY();
+    float m, b, x, y;
+
+    x = p1.x;
+    y = p1.y;
+
+    if (p1.getX() == p2.getX()) {
+      if (p1.y < p2.y) {
+        Point temp = p1;
+        p1 = temp;
+        temp = p2;
+      }
+      while (y < p2.y) {
+        SDL_RenderDrawRectF(renderer, new Point(x, y, 1));
+        x = p1.x + (dx / dy) * (y - p1.y);
+        y++;
+      }
+    } else {
+      if (p1.x < p2.x) {
+        Point temp = p1;
+        p1 = temp;
+        temp = p2;
+      }
+      while (x < p2.x) {
+        SDL_RenderDrawRectF(renderer, new Point(x, y, 1));
+        y = p1.y + (dy / dx) * (x - p1.x);
+        x++;
+      }
+    }
+  }
+  static void renderLineTest(SDL_Renderer *renderer, Point p1, Point p2) {
+    float dx = p2.getX() - p1.getX();
+    float dy = p2.getY() - p1.getY();
+    float m, b, x, y;
+    x = p1.x;
+    y = p1.y;
+
+    if (p1.getX() == p2.getX()) {
+      m = dx / dy;
+      b = p1.x - 1 * m * p1.y;
+      if (p1.y > p2.y) {
+        Point temp = p1;
+        p1 = temp;
+        temp = p2;
+      }
+      while (y < p2.y) {
+        SDL_RenderDrawRectF(renderer, new Point(x, y, 1));
+        x = m * y + b;
+        y++;
+      }
+    } else {
+      m = dy / dx;
+      b = p1.y - 1 * m * p1.x;
+      if (p1.x > p2.x) {
+        Point temp = p1;
+        p1 = temp;
+        temp = p2;
+      }
+      while (x < p2.x) {
+        SDL_RenderDrawRectF(renderer, new Point(x, y, 1));
+        y = m * x + b;
+        x++;
+      }
+    }
+  }
+  static void renderDDALine(SDL_Renderer *renderer, Point p1, Point p2) {
+    float dx = p2.getX() - p1.getX();
+    float dy = p2.getY() - p1.getY();
+    if (std::abs(dx) > std::abs(dy)) {
+      // Line is horizontal like
+      if (p1.x > p2.x) {
+        Point temp = p1;
+        p1 = temp;
+        temp = p2;
+      }
+      float m = dy / dx;
+      float x = p1.x;
+      float y = p1.y;
+      while (x < p2.x) {
+        SDL_RenderFillRectF(renderer, new Point(x, y, 1));
+        x++;
+        y += m;
+      }
+    } else {
+      // Line is vertical like
+      if (p1.y > p2.y) {
+        Point temp = p1;
+        p1 = temp;
+        temp = p2;
+      }
+      float m = dx / dy;
+      float x = p1.x;
+      float y = p1.y;
+      while (y < p2.y) {
+        SDL_RenderFillRectF(renderer, new Point(x, y, 1));
+        y++;
+        x += m;
+      }
+    }
+  }
 };
 #endif
